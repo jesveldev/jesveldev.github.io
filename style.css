@@ -1,0 +1,167 @@
+*{
+	margin:0;
+	padding: 0;
+}
+
+body{
+	background-color:#1C1C1C;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	font-family: "Bookman Old Style",Georgia;
+}
+
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+
+#menu-principal{
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	background: white -webkit-linear-gradient(top,
+											#400000 0,
+											#400000 20%,
+											white 0,
+											white 80%,
+											#400000 0,
+											#400000 100%);
+	width: 15vw;
+	height: 60vh;
+	padding:2%;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px black;
+}
+
+#boton-menu-registro{
+	margin: 20% 0;
+}
+
+.boton-menu{
+	margin: 2% 0;
+	border:none;
+	background-color: #400000;
+	color:white;
+	padding:1%;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.boton-menu:hover{
+	background-color: #600000;
+}
+
+.boton-menu:active{
+	background-color: #300000;
+}
+
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+
+#interfaz-inicio-de-sesion, #interfaz-registro{
+	display: none;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items:center;
+	border-radius: 10px;
+	width: 40vw;
+	height: 75vh;
+	text-align: center;
+	background: white -webkit-linear-gradient(top,
+											#400000 0,
+											#400000 25%,
+											white 0,
+											white 100%);
+	box-shadow: 0px 0px 10px black;
+	overflow:hidden;
+}
+
+#logo{
+	border-radius: 100%;
+	margin:8% 0 6% 0;
+}
+
+.formulario{
+	margin:0 0 5% 0;
+}
+
+input{
+	font-size: 1.25em;
+	outline-style: none;
+	border:none;
+	border-bottom: 2px solid #400000;
+	background: transparent;
+}
+
+input[name="usuario"]{
+	display: block;
+	margin-bottom: 6%;
+}
+
+input[name="clave"]{
+	display: block;
+	margin-bottom: 6%;
+}
+
+#iniciar-sesion.boton-inicio-de-sesion{
+	margin-top: 4%;
+}
+
+.boton-inicio-de-sesion,.breg{
+	border:none;
+	border-left: 8px solid #400000;
+	background-color:transparent;
+	color:#400000;
+	font-weight: bold;
+	padding:1%;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+.boton-inicio-de-sesion:hover,.breg:hover{
+	border-left: 8px solid red;
+	color:red;
+}
+
+.boton-inicio-de-sesion:active,.breg:active{
+	border-left: 8px solid #800000;
+	color:#800000;
+}
+
+#boton-inicio-de-sesion-volver.boton-inicio-de-sesion{
+
+}
+
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+
+button{
+	font-size: 1.2em;
+}
+
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+
+.reg-label{
+	color: white;
+	margin:5% 0 12% 0;
+	cursor: default;
+}
+
+#registrarse{
+	margin-top: 2%;
+}
+
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
+
+.parrafo-ventana-modal-acercade{
+	font-size: 1.3em;
+}
