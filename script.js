@@ -31,11 +31,15 @@ function Eventos_del_Menu_Principal(){
 
 	botonAcercaDe.addEventListener("click",()=>{
 
+		// Se creará una nueva ventana modal para añadirla al documento
+
 		let ventanaModal = document.createElement("DIV"),
 			articuloVentanaModal = document.createElement("ARTICLE"),
 			primerParrafoVentanaModal = document.createElement("P"),
 			segundoParrafoVentanaModal = document.createElement("P"),
 			botonVentanaModal = document.createElement("BUTTON");
+
+		// Se configuran los elementos con estilos y clases
 
 		ventanaModal.setAttribute("class","ventana-modal-acercade");
 		ventanaModal.setAttribute("style",`
@@ -73,11 +77,15 @@ function Eventos_del_Menu_Principal(){
 		botonVentanaModal.setAttribute("class","cerrar-ventana-modal-acercade");
 		botonVentanaModal.textContent="Cerrar";
 
+		// Se anidan los elementos entre si
+
 		articuloVentanaModal.appendChild(primerParrafoVentanaModal);
 		articuloVentanaModal.appendChild(segundoParrafoVentanaModal);
 		articuloVentanaModal.appendChild(botonVentanaModal);
 
 		ventanaModal.appendChild(articuloVentanaModal);
+
+		// Se añaden los elementos al documento
 
 		document.querySelector("body").insertAdjacentElement("beforeEnd",ventanaModal);
 
