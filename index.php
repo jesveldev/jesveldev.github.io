@@ -8,7 +8,6 @@
 	</head>
 
 	<body>
-
 		<section id="menu-principal">
 			<button id="boton-menu-iniciar-sesion" class="boton-menu">Iniciar sesión</button>
 			<button id="boton-menu-registro" class="boton-menu">Registro</button>
@@ -16,7 +15,6 @@
 		</section>
 
 		<section id="interfaz-inicio-de-sesion">
-
 			<img src="img/S.png" id="logo">
 
 			<div class="formulario">
@@ -35,21 +33,19 @@
 			<h3 class="reg-label">Por favor, ingrese sus datos</h3>
 
 			<div class="formulario">
-				<input type="text" name="usuario" required maxlength="10" minlength="5" autocomplete="off" placeholder="Usuario">
+				<input type="text" name="reg-usuario" required maxlength="10" minlength="5" autocomplete="off" placeholder="Usuario">
 
-				<input type="password" name="clave" required maxlength="10" minlength="5" autocomplete="off" placeholder="Contraseña">
+				<input type="password" name="reg-clave" required maxlength="10" minlength="6" autocomplete="off" placeholder="Contraseña">
 
-				<input type="text" name="usuario" required maxlength="10" minlength="5" autocomplete="off" placeholder="Confirme su usuario">
+				<input type="text" name="reg-confirmar-usuario" required maxlength="10" minlength="5" autocomplete="off" placeholder="Confirme su usuario">
 
-				<input type="password" name="clave" required maxlength="10" minlength="5" autocomplete="off" placeholder="Confirme su contraseña">
+				<input type="password" name="reg-confirmar-clave" required maxlength="10" minlength="5" autocomplete="off" placeholder="Confirme su contraseña">
 
 				<button id="registrarse" class="breg">Registrarse</button>
 			</div>
 
 			<button id="breg-volver" class="breg">Volver</button>
 		</section>
-
-		<main id="panel-de-usuario"></main>
 	</body>
 
 	<script src="script.js"></script>
