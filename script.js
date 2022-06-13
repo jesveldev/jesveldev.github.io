@@ -181,48 +181,54 @@ function Evento_de_Registro(){
 
 		}else{
 
-			// document.querySelector("#registrarse").setAttribute("disabled","true");
-			// document.querySelector("#registrarse").setAttribute("style","opacity:0.3;");
+			document.querySelector("#registrarse").style.display="none";
+			document.querySelector("#breg-volver").style.display="none";
+			document.querySelector("#interfaz-registro").style.opacity="0.5";
 
-			let panelDeUsuario = document.createElement("MAIN"),
-				codigoPHPInterno = `
-					<?php
-						$usuario = "root";
-						$clave = "";
-						$base_de_datos = "TCDB";
-						$host = "localhost";
+			document.querySelector("input[name='reg-usuario']").setAttribute("disabled","true");
+			document.querySelector("input[name='reg-clave']").setAttribute("disabled","true");
+			document.querySelector("input[name='reg-confirmar-usuario']").setAttribute("disabled","true");
+			document.querySelector("input[name='reg-confirmar-clave']").setAttribute("disabled","true");
 
-						$conexion = mysqli_connect($host,$usuario,$clave,$base_de_datos);
+			// let panelDeUsuario = document.createElement("MAIN");
+			// let codigoPHPInterno_1 = "<?php $usuario = 'root';$clave = '';$base_de_datos = 'TCDB';$host = 'localhost';$conexion = mysqli_connect($host,$usuario,$clave,$base_de_datos);$consulta = 'INSERT INTO USUARIOS_REGISTRADOS (ID,USUARIO,CLAVE) VALUES(NULL,";
+			// let codigoPHPInterno_2 = ${datos_de_registro.nombre_de_usuario}+','+${datos_de_registro.clave};
+			// let codigoPHPInterno_3 = ");';mysqli_query($conexion,$consulta);?>";
 
-						$consulta = "INSERT INTO USUARIOS_REGISTRADOS (ID,USUARIO,CLAVE) VALUES(
-									NULL,
-									${datos_de_registro.nombre_de_usuario},
-									${datos_de_registro.clave}
-						);";
+			// panelDeUsuario.setAttribute("id","panel-de-usuario");
+			// panelDeUsuario.innerHTML+=codigoPHPInterno;
 
-						mysqli_query($conexion,$consulta);
-					?>
-				`;
+			// document.querySelector("body").insertAdjacentElement("beforeEnd",panelDeUsuario);
 
-				panelDeUsuario.setAttribute("id","panel-de-usuario");
-				panelDeUsuario.innerHTML+=codigoPHPInterno;
+			setTimeout(()=>{
 
-			document.querySelector("body").insertAdjacentElement("beforeEnd",panelDeUsuario);
+				document.querySelector("body").insertAdjacentElement("beforeEnd",
+					construirVentanaModal(`
+						Registro exitoso`,`
+						Te has registrado en la base de datos correctamente.`
+					)
+				);
 
-			document.querySelector("body").insertAdjacentElement("beforeEnd",
-				construirVentanaModal(`
-					Registro exitoso`,`
-					Te has registrado en la base de datos correctamente.`
-				)
-			);
+				document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
+					document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+				});
 
-			document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
-				document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
-			});
+				document.querySelector("#registrarse").style.display="inline";
+				document.querySelector("#breg-volver").style.display="inline";
 
-			// document.querySelector("#registrarse").removeAttribute("disabled");
-			// document.querySelector("#registrarse").removeAttribute("style");
+				document.querySelector("input[name='reg-usuario']").value="";
+				document.querySelector("input[name='reg-clave']").value="";
+				document.querySelector("input[name='reg-confirmar-usuario']").value="";
+				document.querySelector("input[name='reg-confirmar-clave']").value="";
+				
+				document.querySelector("input[name='reg-usuario']").removeAttribute("disabled");
+				document.querySelector("input[name='reg-clave']").removeAttribute("disabled");
+				document.querySelector("input[name='reg-confirmar-usuario']").removeAttribute("disabled");
+				document.querySelector("input[name='reg-confirmar-clave']").removeAttribute("disabled");
 
+				document.querySelector("#interfaz-registro").style.opacity="1";
+
+			}, 3000);
 		}
 	});
 }
