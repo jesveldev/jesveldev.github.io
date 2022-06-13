@@ -1,10 +1,27 @@
 "use strict";
 
+var cuentasRegistradas = [{usuario:"admin",clave:"iamtheboss"}];
+
 // ---------------------------------------------------------------
 // ---------------------------------------------------------------
 // ---------------------------------------------------------------
 
-function construirVentanaModal(texto_1,texto_2){
+function verificarDatosRegistrados(usuario,clave){
+
+	let retorno;
+
+	cuentasRegistradas.map(e=>{
+		(e.usuario==usuario || e.clave==clave)?retorno=true:retorno=false;
+	});
+
+	return retorno;
+}
+
+// ---------------------------------------------------------------
+// ---------------------------------------------------------------
+// ---------------------------------------------------------------
+
+function construirVentanaModal(texto_1="",texto_2){
 	
 	// Se creará una nueva ventana modal para añadirla al documento
 
@@ -190,43 +207,90 @@ function Evento_de_Registro(){
 			document.querySelector("input[name='reg-confirmar-usuario']").setAttribute("disabled","true");
 			document.querySelector("input[name='reg-confirmar-clave']").setAttribute("disabled","true");
 
-			// let panelDeUsuario = document.createElement("MAIN");
-			// let codigoPHPInterno_1 = "<?php $usuario = 'root';$clave = '';$base_de_datos = 'TCDB';$host = 'localhost';$conexion = mysqli_connect($host,$usuario,$clave,$base_de_datos);$consulta = 'INSERT INTO USUARIOS_REGISTRADOS (ID,USUARIO,CLAVE) VALUES(NULL,";
-			// let codigoPHPInterno_2 = ${datos_de_registro.nombre_de_usuario}+','+${datos_de_registro.clave};
-			// let codigoPHPInterno_3 = ");';mysqli_query($conexion,$consulta);?>";
+			// --------------------------------------------------------------
+			// --------------------------------------------------------------
+			// --------------------------------------------------------------
 
-			// panelDeUsuario.setAttribute("id","panel-de-usuario");
-			// panelDeUsuario.innerHTML+=codigoPHPInterno;
-
-			// document.querySelector("body").insertAdjacentElement("beforeEnd",panelDeUsuario);
+			// En lugar de un setTimeout() debería ir el código que comunica con 
+			// la base de datos.
 
 			setTimeout(()=>{
 
-				document.querySelector("body").insertAdjacentElement("beforeEnd",
-					construirVentanaModal(`
-						Registro exitoso`,`
-						Te has registrado en la base de datos correctamente.`
-					)
-				);
+				if(verificarDatosRegistrados(datos_de_registro.nombre_de_usuario,datos_de_registro.clave)){
 
-				document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
-					document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
-				});
+					document.querySelector("body").insertAdjacentElement("beforeEnd",
+						construirVentanaModal(`No es posible registrar estos datos`,`
+							El usuario o la contraseña ya existen.`
+						)
+					);
 
-				document.querySelector("#registrarse").style.display="inline";
-				document.querySelector("#breg-volver").style.display="inline";
+					document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
+						document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+					});
 
-				document.querySelector("input[name='reg-usuario']").value="";
-				document.querySelector("input[name='reg-clave']").value="";
-				document.querySelector("input[name='reg-confirmar-usuario']").value="";
-				document.querySelector("input[name='reg-confirmar-clave']").value="";
-				
-				document.querySelector("input[name='reg-usuario']").removeAttribute("disabled");
-				document.querySelector("input[name='reg-clave']").removeAttribute("disabled");
-				document.querySelector("input[name='reg-confirmar-usuario']").removeAttribute("disabled");
-				document.querySelector("input[name='reg-confirmar-clave']").removeAttribute("disabled");
+					document.querySelector("#registrarse").style.display="inline";
+					document.querySelector("#breg-volver").style.display="inline";
 
-				document.querySelector("#interfaz-registro").style.opacity="1";
+					document.querySelector("input[name='reg-usuario']").value="";
+					document.querySelector("input[name='reg-clave']").value="";
+					document.querySelector("input[name='reg-confirmar-usuario']").value="";
+					document.querySelector("input[name='reg-confirmar-clave']").value="";
+					
+					document.querySelector("input[name='reg-usuario']").removeAttribute("disabled");
+					document.querySelector("input[name='reg-clave']").removeAttribute("disabled");
+					document.querySelector("input[name='reg-confirmar-usuario']").removeAttribute("disabled");
+					document.querySelector("input[name='reg-confirmar-clave']").removeAttribute("disabled");
+
+					document.querySelector("#interfaz-registro").style.opacity="1";
+
+				}else{
+
+					// ----------------------------------------------------------------
+					// ----------------------------------------------------------------
+					// ----------------------------------------------------------------
+					// ----------------------------------------------------------------
+
+					// En este espacio de código se podría implementar la comunicación
+					// con la base de datos luego de eliminar el setTimeout() donde 
+					// está todo anidado.
+
+					let datosDeUsuario = {
+						usuario:datos_de_registro.nombre_de_usuario,
+						clave:datos_de_registro.clave
+					};
+
+					cuentasRegistradas.push(datosDeUsuario);
+
+					// ----------------------------------------------------------------
+					// ----------------------------------------------------------------
+					// ----------------------------------------------------------------
+					// ----------------------------------------------------------------
+
+					document.querySelector("body").insertAdjacentElement("beforeEnd",
+						construirVentanaModal(``,`
+							Te has registrado en la base de datos correctamente.`
+						)
+					);
+
+					document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
+						document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+					});
+
+					document.querySelector("#registrarse").style.display="inline";
+					document.querySelector("#breg-volver").style.display="inline";
+
+					document.querySelector("input[name='reg-usuario']").value="";
+					document.querySelector("input[name='reg-clave']").value="";
+					document.querySelector("input[name='reg-confirmar-usuario']").value="";
+					document.querySelector("input[name='reg-confirmar-clave']").value="";
+					
+					document.querySelector("input[name='reg-usuario']").removeAttribute("disabled");
+					document.querySelector("input[name='reg-clave']").removeAttribute("disabled");
+					document.querySelector("input[name='reg-confirmar-usuario']").removeAttribute("disabled");
+					document.querySelector("input[name='reg-confirmar-clave']").removeAttribute("disabled");
+
+					document.querySelector("#interfaz-registro").style.opacity="1";
+				}
 
 			}, 3000);
 		}
@@ -237,8 +301,80 @@ function Evento_de_Registro(){
 // ---------------------------------------------------------------
 // ---------------------------------------------------------------
 
-function Eventos_de_Inicio_de_Sesion(){
-	// Code
+function Evento_de_Inicio_de_Sesion(){
+
+	document.querySelector("#iniciar-sesion").addEventListener("click",()=>{
+
+		let datos ={
+			usuario:document.querySelector("input[name='usuario']").value,
+			clave:document.querySelector("input[name='clave']").value
+		};
+
+		if(verificarDatosRegistrados(datos.usuario,datos.clave)){
+
+			document.querySelector("#iniciar-sesion").style.display="none";
+			document.querySelector("#boton-inicio-de-sesion-volver").style.display="none";
+			document.querySelector("#interfaz-inicio-de-sesion").style.opacity="0.5";
+
+			document.querySelector("input[name='usuario']").setAttribute("disabled","true");
+			document.querySelector("input[name='clave']").setAttribute("disabled","true");
+
+			setTimeout(()=>{
+				document.querySelector("body").insertAdjacentElement("beforeEnd",
+					construirVentanaModal(``,`
+						Has iniciado sesión correctamente.`
+					)
+				);
+
+				document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
+					document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+				});
+
+				document.querySelector("#iniciar-sesion").style.display="inline";
+				document.querySelector("#boton-inicio-de-sesion-volver").style.display="inline";
+
+				document.querySelector("input[name='usuario']").value="";
+				document.querySelector("input[name='clave']").value="";
+					
+				document.querySelector("input[name='usuario']").removeAttribute("disabled");
+				document.querySelector("input[name='clave']").removeAttribute("disabled");
+
+				document.querySelector("#interfaz-inicio-de-sesion").style.opacity="1";
+			},3000);
+
+		}else{
+
+			document.querySelector("#iniciar-sesion").style.display="none";
+			document.querySelector("#boton-inicio-de-sesion-volver").style.display="none";
+			document.querySelector("#interfaz-inicio-de-sesion").style.opacity="0.5";
+
+			document.querySelector("input[name='usuario']").setAttribute("disabled","true");
+			document.querySelector("input[name='clave']").setAttribute("disabled","true");
+
+			setTimeout(()=>{
+				document.querySelector("body").insertAdjacentElement("beforeEnd",
+					construirVentanaModal(``,`
+						El usuario o la contraseña es incorrecto. Inténtelo de nuevo.`
+					)
+				);
+
+				document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
+					document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+				});
+
+				document.querySelector("#iniciar-sesion").style.display="inline";
+				document.querySelector("#boton-inicio-de-sesion-volver").style.display="inline";
+
+				document.querySelector("input[name='usuario']").value="";
+				document.querySelector("input[name='clave']").value="";
+					
+				document.querySelector("input[name='usuario']").removeAttribute("disabled");
+				document.querySelector("input[name='clave']").removeAttribute("disabled");
+
+				document.querySelector("#interfaz-inicio-de-sesion").style.opacity="1";
+			},3000);
+		}
+	});
 }
 
 // ---------------------------------------------------------------
@@ -249,7 +385,7 @@ window.addEventListener("load",()=>{
 
 	Eventos_del_Menu_Principal();
 	Evento_de_Registro();
-	Eventos_de_Inicio_de_Sesion();
+	Evento_de_Inicio_de_Sesion();
 
 });
 

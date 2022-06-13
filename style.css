@@ -7,9 +7,10 @@
 body{
 	background-color:#1C1C1C;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end;
 	align-items: center;
 	height: 100vh;
+	padding-right: 3%;
 }
 
 /*-------------------------------------------------------------*/
@@ -178,4 +179,49 @@ button{
 
 .parrafo-ventana-modal{
 	font-size: 1.3em;
+}
+
+@keyframes giro-logo{
+	to{
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes parpadeo{
+	0%{
+		opacity:0.5;
+	}
+
+	50%{
+		opacity: 0.9;
+	}
+
+	100%{
+		opacity:0.5;
+	}
+}
+
+#logo-menu{
+	position: fixed;
+	top:10%;
+	left: 25%;
+	opacity:0.15;
+	width: 200px;
+	border-radius: 100%;
+	margin:8% 0 6% 0;
+	animation: giro-logo 10s linear infinite;
+	transition: 0.22s linear;
+}
+
+#logo-menu:hover{
+	opacity: 0.5;
+}
+
+#contenedor-version-de-prueba{
+	position: fixed;
+	top:94%;
+	left: 3%;
+	color:white;
+	opacity:0.5;
+	animation: parpadeo 3s linear infinite;
 }
