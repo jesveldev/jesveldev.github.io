@@ -10,9 +10,32 @@ function verificarDatosRegistrados(usuario,clave){
 
 	let retorno;
 
-	cuentasRegistradas.map(e=>{
-		(e.usuario==usuario || e.clave==clave)?retorno=true:retorno=false;
-	});
+	for (let i = 0; i < cuentasRegistradas.length; i++) {
+		
+		if(cuentasRegistradas[i].usuario==usuario || cuentasRegistradas[i].clave==clave){
+
+			retorno=true;
+			break;
+
+		}else retorno=false;
+	}
+
+	return retorno;
+}
+
+function verificarInicioDeSesion(usuario,clave){
+
+	let retorno;
+
+	for (let i = 0; i < cuentasRegistradas.length; i++) {
+		
+		if(cuentasRegistradas[i].usuario==usuario && cuentasRegistradas[i].clave==clave){
+
+			retorno=true;
+			break;
+
+		}else retorno=false;
+	}
 
 	return retorno;
 }
@@ -336,7 +359,7 @@ function Evento_de_Inicio_de_Sesion(){
 				document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
 			});
 
-		}else if(verificarDatosRegistrados(datos.usuario,datos.clave)){
+		}else if(verificarInicioDeSesion(datos.usuario,datos.clave)){
 
 			document.querySelector("#iniciar-sesion").style.display="none";
 			document.querySelector("#boton-inicio-de-sesion-volver").style.display="none";
