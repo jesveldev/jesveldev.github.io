@@ -47,6 +47,8 @@ function construirVentanaModal(texto_1="",texto_2){
 		background-color:rgba(20,20,20,0.8);
 		color:white;
 		text-shadow:0px 0px 8px red;
+		font-size:1.1em;
+		font-weight:bold;
 	`);
 
 	articuloVentanaModal.setAttribute("style","text-align:center;");
@@ -59,7 +61,7 @@ function construirVentanaModal(texto_1="",texto_2){
 
 	botonVentanaModal.setAttribute("style",`
 		color:white;
-		background-color: #4A8D4A;
+		background:-webkit-linear-gradient(bottom,#DE2573,#FE4F30);
 		border:none;
 		border-radius:5px;
 		padding:2%;
@@ -310,7 +312,31 @@ function Evento_de_Inicio_de_Sesion(){
 			clave:document.querySelector("input[name='clave']").value
 		};
 
-		if(verificarDatosRegistrados(datos.usuario,datos.clave)){
+		if(datos.usuario.length==0){
+
+			document.querySelector("body").insertAdjacentElement("beforeEnd",
+				construirVentanaModal(``,`
+					Coloque su nombre de usuario.`
+				)
+			);
+
+			document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
+				document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+			});
+
+		}else if(datos.clave.length==0){
+
+			document.querySelector("body").insertAdjacentElement("beforeEnd",
+				construirVentanaModal(``,`
+					Coloque su contraseña.`
+				)
+			);
+
+			document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
+				document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+			});
+
+		}else if(verificarDatosRegistrados(datos.usuario,datos.clave)){
 
 			document.querySelector("#iniciar-sesion").style.display="none";
 			document.querySelector("#boton-inicio-de-sesion-volver").style.display="none";

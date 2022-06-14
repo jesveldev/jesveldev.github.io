@@ -5,7 +5,7 @@
 }
 
 body{
-	background-color:#1C1C1C;
+	background:-webkit-linear-gradient(300deg,#0F0F0F,#32003D);
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
@@ -22,17 +22,18 @@ body{
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
-	background: white -webkit-linear-gradient(top,
+/*	background: white -webkit-linear-gradient(top,
 											#400000 0,
 											#400000 20%,
 											white 0,
 											white 80%,
 											#400000 0,
-											#400000 100%);
+											#400000 100%);*/
+	background: -webkit-linear-gradient(bottom,#DE2573,#FE4F30);
 	width: 15vw;
 	height: 60vh;
 	padding:2%;
-	border-radius: 10px;
+	border-radius: 40px 4px 40px 4px;
 	box-shadow: 0px 0px 10px black;
 }
 
@@ -40,14 +41,32 @@ body{
 	margin: 20% 0;
 }
 
+@keyframes brillo-fluctuante{
+	0%{
+		box-shadow: 0px 0px 5px white;
+	}
+
+	50%{
+		box-shadow: 0px 0px 15px white;
+	}
+
+	100%{
+		box-shadow: 0px 0px 5px white;
+	}
+}
+
 .boton-menu{
 	margin: 2% 0;
 	border:none;
-	background-color: #400000;
+	background-color: #AC306D;
 	color:white;
-	padding:1%;
+	padding:2.5% 1%;
 	border-radius: 5px;
 	cursor: pointer;
+	text-shadow: 0px 0px 10px black;
+	box-shadow: 0px 0px 5px white;
+	transition:0.1s linear;
+	animation: brillo-fluctuante 2s linear infinite;
 }
 
 .boton-menu:hover{
@@ -68,17 +87,28 @@ body{
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items:center;
-	border-radius: 10px;
+	border-radius: 40px 4px 40px 4px;
 	width: 40vw;
-	height: 75vh;
 	text-align: center;
-	background: white -webkit-linear-gradient(top,
+
+/*	background: white -webkit-linear-gradient(top,
 											#400000 0,
 											#400000 25%,
 											white 0,
-											white 100%);
+											white 100%);*/
+
+	background: white -webkit-linear-gradient(bottom,#EB4123,#0F0F0F);
+
 	box-shadow: 0px 0px 10px black;
 	overflow-y:scroll;
+}
+
+#interfaz-inicio-de-sesion{
+	height: 75vh;
+}
+
+#interfaz-registro{
+	height: 80vh;
 }
 
 #interfaz-inicio-de-sesion::-webkit-scrollbar,#interfaz-registro::-webkit-scrollbar{
@@ -87,7 +117,9 @@ body{
 
 #logo{
 	border-radius: 100%;
-	margin:8% 0 6% 0;
+	margin:0 0 6% 0;
+	width: 80px;
+	height: 80px;
 }
 
 .formulario{
@@ -98,26 +130,21 @@ input{
 	font-size: 1.25em;
 	outline-style: none;
 	border:none;
-	border-bottom: 2px solid #400000;
+	border-bottom: 4px solid rgba(255,255,255,0.5);
 	background: transparent;
-}
-
-input[name="usuario"]{
+	color:white;
 	display: block;
 	margin-bottom: 6%;
 }
 
-input[name="clave"]{
-	display: block;
-	margin-bottom: 6%;
+input::placeholder{
+	color:rgba(255,255,255,0.8);
 }
 
 input[name="usuario"],input[name="clave"],
 input[name="reg-usuario"],input[name="reg-clave"],
 input[name="reg-confirmar-usuario"],input[name="reg-confirmar-clave"]
 {
-	display: block;
-	margin-bottom: 6%;
 	width: 100%;
 }
 
@@ -128,9 +155,11 @@ input[name="reg-confirmar-usuario"],input[name="reg-confirmar-clave"]
 
 .boton-inicio-de-sesion,.breg{
 	border:none;
-	border-left: 8px solid #400000;
+	border-left: 8px solid white;
 	background-color:transparent;
-	color:#400000;
+	/*color:#400000;*/
+	color: white;
+	opacity: 0.75;
 	font-weight: bold;
 	padding:1%;
 	border-radius: 2px;
@@ -138,13 +167,12 @@ input[name="reg-confirmar-usuario"],input[name="reg-confirmar-clave"]
 }
 
 .boton-inicio-de-sesion:hover,.breg:hover{
-	border-left: 8px solid red;
-	color:red;
+	opacity: 0.5;
 }
 
 .boton-inicio-de-sesion:active,.breg:active{
-	border-left: 8px solid #800000;
-	color:#800000;
+	border-left: 8px solid darkgray;
+	color:darkgray;
 }
 
 #boton-inicio-de-sesion-volver.boton-inicio-de-sesion{
@@ -162,7 +190,7 @@ button{
 /*-------------------------------------------------------------*/
 
 .reg-label{
-	color: white;
+	color: rgba(255,255,255,0.65);
 	margin:5% 0 12% 0;
 	cursor: default;
 }
@@ -203,20 +231,32 @@ button{
 
 #logo-menu{
 	position: fixed;
-	top:10%;
-	left: 25%;
-	opacity:0.15;
-	width: 200px;
+	top:15%;
+	left: 13%;
+	opacity:0.5;
+	width: 300px;
 	border-radius: 100%;
-	margin:8% 0 6% 0;
-	animation: giro-logo 10s linear infinite;
+	/*margin:8% 0 6% 0;*/
+	animation: giro-logo 30s linear infinite;
 	transition: 0.22s linear;
 }
 
+#logo-interno-menu{
+	position: fixed;
+	top:15%;
+	left: 13%;
+	opacity:1;
+	width: 300px;
+	border-radius: 100%;
+	/*margin:8% 0 6% 0;*/
+	transition: 0.22s linear;
+}
+
+/*
 #logo-menu:hover{
 	opacity: 0.5;
 }
-
+*/
 #contenedor-version-de-prueba{
 	position: fixed;
 	top:94%;
@@ -224,4 +264,7 @@ button{
 	color:white;
 	opacity:0.5;
 	animation: parpadeo 3s linear infinite;
+	font-weight: bold;
+	font-style: italic;
+	cursor:default;
 }
