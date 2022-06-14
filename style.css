@@ -70,11 +70,19 @@ body{
 }
 
 .boton-menu:hover{
-	background-color: #600000;
+	background-color: #961E59;
+}
+
+.boton-menu:nth-child(odd):hover{
+	transform: rotate(2deg);
+}
+
+.boton-menu:nth-child(even):hover{
+	transform: rotate(-2deg);
 }
 
 .boton-menu:active{
-	background-color: #300000;
+	background-color: #78033D;
 }
 
 /*-------------------------------------------------------------*/
