@@ -18,7 +18,7 @@ body{
 /*-------------------------------------------------------------*/
 /*-------------------------------------------------------------*/
 
-#menu-principal{
+#main-menu{
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
@@ -37,7 +37,7 @@ body{
 	box-shadow: 0px 0px 10px black;
 }
 
-#boton-menu-registro{
+#main-menu-button-signup{
 	margin: 20% 0;
 }
 
@@ -55,7 +55,7 @@ body{
 	}
 }
 
-.boton-menu{
+.main-menu-button{
 	margin: 2% 0;
 	border:none;
 	background-color: #AC306D;
@@ -69,19 +69,19 @@ body{
 	animation: brillo-fluctuante 2s linear infinite;
 }
 
-.boton-menu:hover{
+.main-menu-button:hover{
 	background-color: #961E59;
 }
 
-.boton-menu:nth-child(odd):hover{
+.main-menu-button:nth-child(odd):hover{
 	transform: rotate(2deg);
 }
 
-.boton-menu:nth-child(even):hover{
+.main-menu-button:nth-child(even):hover{
 	transform: rotate(-2deg);
 }
 
-.boton-menu:active{
+.main-menu-button:active{
 	background-color: #78033D;
 }
 
@@ -90,7 +90,7 @@ body{
 /*-------------------------------------------------------------*/
 /*-------------------------------------------------------------*/
 
-#interfaz-inicio-de-sesion, #interfaz-registro{
+#login-interface, #signup-interface{
 	display: none;
 	flex-flow: column nowrap;
 	justify-content: center;
@@ -111,15 +111,15 @@ body{
 	overflow-y:scroll;
 }
 
-#interfaz-inicio-de-sesion{
+#login-interface{
 	height: 75vh;
 }
 
-#interfaz-registro{
+#signup-interface{
 	height: 80vh;
 }
 
-#interfaz-inicio-de-sesion::-webkit-scrollbar,#interfaz-registro::-webkit-scrollbar{
+#login-interface::-webkit-scrollbar,#signup-interface::-webkit-scrollbar{
 	width: 0;
 }
 
@@ -130,7 +130,7 @@ body{
 	height: 80px;
 }
 
-.formulario{
+.form{
 	margin:0 0 5% 0;
 }
 
@@ -149,9 +149,9 @@ input::placeholder{
 	color:rgba(255,255,255,0.8);
 }
 
-input[name="usuario"],input[name="clave"],
-input[name="reg-usuario"],input[name="reg-clave"],
-input[name="reg-confirmar-usuario"],input[name="reg-confirmar-clave"]
+input[name="username"],input[name="password"],
+input[name="signup-username"],input[name="signup-password"],
+input[name="signup-confirm-username"],input[name="signup-confirm-password"]
 {
 	width: 100%;
 }
@@ -161,7 +161,7 @@ input[name="reg-confirmar-usuario"],input[name="reg-confirmar-clave"]
 	margin-top: 4%;
 }
 
-.boton-inicio-de-sesion,.breg{
+.boton-inicio-de-sesion,.signup-button{
 	border:none;
 	border-left: 8px solid white;
 	background-color:transparent;
@@ -173,11 +173,11 @@ input[name="reg-confirmar-usuario"],input[name="reg-confirmar-clave"]
 	cursor: pointer;
 }
 
-.boton-inicio-de-sesion:hover,.breg:hover{
+.boton-inicio-de-sesion:hover,.signup-button:hover{
 	opacity: 0.5;
 }
 
-.boton-inicio-de-sesion:active,.breg:active{
+.boton-inicio-de-sesion:active,.signup-button:active{
 	border-left: 8px solid darkgray;
 	color:darkgray;
 }
@@ -196,13 +196,13 @@ button{
 /*-------------------------------------------------------------*/
 /*-------------------------------------------------------------*/
 
-.reg-label{
+.signup-label{
 	color: rgba(255,255,255,0.65);
 	margin:5% 0 12% 0;
 	cursor: default;
 }
 
-#registrarse{
+#signup{
 	margin-top: 2%;
 }
 

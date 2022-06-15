@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 	<head>
-		<title>Iniciar sesión - Base de Datos</title>
+		<title>Log-in - Database</title>
 		<meta charset="utf-8">
 		<!-- <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css"> -->
 		<link rel="stylesheet" href="style.css">
@@ -9,43 +9,43 @@
 	</head>
 
 	<body>
-		<section id="menu-principal">
-			<button id="boton-menu-iniciar-sesion" class="boton-menu">Iniciar sesión</button>
-			<button id="boton-menu-registro" class="boton-menu">Registro</button>
-			<button id="boton-menu-acercade" class="boton-menu">Acerca de </button>
+		<section id="main-menu">
+			<button id="main-menu-button-login" class="main-menu-button">Log in</button>
+			<button id="main-menu-button-signup" class="main-menu-button">Sign in</button>
+			<button id="main-menu-button-about" class="main-menu-button">About</button>
 		</section>
 
-		<section id="interfaz-inicio-de-sesion">
+		<section id="login-interface">
 			<img src="img/logo-inis.png" id="logo">
 
-			<div class="formulario">
-				<input type="text" name="usuario" required maxlength="10" minlength="5" autocomplete="off" placeholder="Usuario">
+			<div class="form">
+				<input type="text" name="username" required maxlength="10" minlength="5" autocomplete="off" placeholder="Username">
 
-				<input type="password" name="clave" required maxlength="10" minlength="5" autocomplete="off" placeholder="Contraseña">
+				<input type="password" name="password" required maxlength="10" minlength="5" autocomplete="off" placeholder="Password">
 
-				<button id="iniciar-sesion" class="boton-inicio-de-sesion">Entrar</button>
+				<button id="iniciar-sesion" class="boton-inicio-de-sesion">Join</button>
 			</div>
 
-			<button id="boton-inicio-de-sesion-volver" class="boton-inicio-de-sesion">Volver</button>
+			<button id="boton-inicio-de-sesion-volver" class="boton-inicio-de-sesion">Back</button>
 		</section>
 
-		<section id="interfaz-registro">
+		<section id="signup-interface">
 
-			<h3 class="reg-label">Por favor, ingrese sus datos</h3>
+			<h3 class="signup-label">Please, insert your data</h3>
 
-			<div class="formulario">
-				<input type="text" name="reg-usuario" required maxlength="10" minlength="5" autocomplete="off" placeholder="Usuario">
+			<div class="form">
+				<input type="text" name="signup-username" required maxlength="10" minlength="5" autocomplete="off" placeholder="Username">
 
-				<input type="password" name="reg-clave" required maxlength="10" minlength="6" autocomplete="off" placeholder="Contraseña">
+				<input type="password" name="signup-password" required maxlength="10" minlength="6" autocomplete="off" placeholder="Password">
 
-				<input type="text" name="reg-confirmar-usuario" required maxlength="10" minlength="5" autocomplete="off" placeholder="Confirme su usuario">
+				<input type="text" name="signup-confirm-username" required maxlength="10" minlength="5" autocomplete="off" placeholder="Confirm username">
 
-				<input type="password" name="reg-confirmar-clave" required maxlength="10" minlength="5" autocomplete="off" placeholder="Confirme su contraseña">
+				<input type="password" name="signup-confirm-password" required maxlength="10" minlength="5" autocomplete="off" placeholder="Confirm password">
 
-				<button id="registrarse" class="breg">Registrarse</button>
+				<button id="signup" class="signup-button">Sign in</button>
 			</div>
 
-			<button id="breg-volver" class="breg">Volver</button>
+			<button id="signup-back" class="signup-button">Back</button>
 		</section>
 
 
@@ -53,7 +53,7 @@
 		<img src="img/logo-interno.png" id="logo-interno-menu">
 
 		<footer id="contenedor-version-de-prueba">
-			<p id="label-version-de-prueba">Versión de prueba</p>
+			<p id="label-version-de-prueba">Test Version</p>
 		</footer>
 	</body>
 
