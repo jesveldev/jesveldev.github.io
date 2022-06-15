@@ -157,11 +157,11 @@ input[name="signup-confirm-username"],input[name="signup-confirm-password"]
 }
 
 
-#iniciar-sesion.boton-inicio-de-sesion{
+#login.login-button{
 	margin-top: 4%;
 }
 
-.boton-inicio-de-sesion,.signup-button{
+.login-button,.signup-button{
 	border:none;
 	border-left: 8px solid white;
 	background-color:transparent;
@@ -173,16 +173,16 @@ input[name="signup-confirm-username"],input[name="signup-confirm-password"]
 	cursor: pointer;
 }
 
-.boton-inicio-de-sesion:hover,.signup-button:hover{
+.login-button:hover,.signup-button:hover{
 	opacity: 0.5;
 }
 
-.boton-inicio-de-sesion:active,.signup-button:active{
+.login-button:active,.signup-button:active{
 	border-left: 8px solid darkgray;
 	color:darkgray;
 }
 
-#boton-inicio-de-sesion-volver.boton-inicio-de-sesion{
+#back.login-button{
 
 }
 
@@ -212,7 +212,7 @@ button{
 /*---------------------------------------------------------------*/
 /*---------------------------------------------------------------*/
 
-.parrafo-ventana-modal{
+.modal-window-paragraph{
 	font-size: 1.3em;
 }
 
@@ -236,7 +236,7 @@ button{
 	}
 }
 
-#logo-menu{
+#menu-logo{
 	position: fixed;
 	top:15%;
 	left: 13%;
@@ -248,7 +248,7 @@ button{
 	transition: 0.22s linear;
 }
 
-#logo-interno-menu{
+#internal-menu-logo{
 	position: fixed;
 	top:15%;
 	left: 13%;
@@ -264,7 +264,7 @@ button{
 	opacity: 0.5;
 }
 */
-#contenedor-version-de-prueba{
+#test-version-container{
 	position: fixed;
 	top:94%;
 	left: 3%;

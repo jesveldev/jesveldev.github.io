@@ -44,20 +44,20 @@ function verificarInicioDeSesion(username,password){
 // ---------------------------------------------------------------
 // ---------------------------------------------------------------
 
-function buildModalWindow(texto_1="",texto_2){
+function buildModalWindow(P1="",P2){
 	
 	// Se creará una nueva ventana modal para añadirla al documento
 
-	let ventanaModal = document.createElement("DIV"),
-		articuloVentanaModal = document.createElement("ARTICLE"),
-		primerParrafoVentanaModal = document.createElement("P"),
-		segundoParrafoVentanaModal = document.createElement("P"),
-		botonVentanaModal = document.createElement("BUTTON");
+	let modalWindow = document.createElement("DIV"),
+		modalWindowArticle = document.createElement("ARTICLE"),
+		firstParagraphModalWindow = document.createElement("P"),
+		secondParagraphModalWindow = document.createElement("P"),
+		modalWindowButton = document.createElement("BUTTON");
 
 	// Se configuran los elementos con estilos y clases
 
-	ventanaModal.setAttribute("class","ventana-modal");
-	ventanaModal.setAttribute("style",`
+	modalWindow.setAttribute("class","modal-window");
+	modalWindow.setAttribute("style",`
 		position:fixed;
 		top:0;
 		left:0;
@@ -74,15 +74,15 @@ function buildModalWindow(texto_1="",texto_2){
 		font-weight:bold;
 	`);
 
-	articuloVentanaModal.setAttribute("style","text-align:center;");
+	modalWindowArticle.setAttribute("style","text-align:center;");
 
-	primerParrafoVentanaModal.setAttribute("class","parrafo-ventana-modal");
-	primerParrafoVentanaModal.textContent=texto_1;
+	firstParagraphModalWindow.setAttribute("class","modal-window-paragraph");
+	firstParagraphModalWindow.textContent=P1;
 
-	segundoParrafoVentanaModal.setAttribute("class","parrafo-ventana-modal");
-	segundoParrafoVentanaModal.textContent=texto_2;
+	secondParagraphModalWindow.setAttribute("class","modal-window-paragraph");
+	secondParagraphModalWindow.textContent=P2;
 
-	botonVentanaModal.setAttribute("style",`
+	modalWindowButton.setAttribute("style",`
 		color:white;
 		background:-webkit-linear-gradient(bottom,#DE2573,#FE4F30);
 		border:none;
@@ -92,61 +92,61 @@ function buildModalWindow(texto_1="",texto_2){
 		cursor:pointer;
 	`);
 
-	botonVentanaModal.setAttribute("class","cerrar-ventana-modal");
-	botonVentanaModal.textContent="Cerrar";
+	modalWindowButton.setAttribute("class","close-modal-window");
+	modalWindowButton.textContent="Close";
 
 	// Se anidan los elementos entre si
 
-	articuloVentanaModal.appendChild(primerParrafoVentanaModal);
-	articuloVentanaModal.appendChild(segundoParrafoVentanaModal);
-	articuloVentanaModal.appendChild(botonVentanaModal);
+	modalWindowArticle.appendChild(firstParagraphModalWindow);
+	modalWindowArticle.appendChild(secondParagraphModalWindow);
+	modalWindowArticle.appendChild(modalWindowButton);
 
-	ventanaModal.appendChild(articuloVentanaModal);
+	modalWindow.appendChild(modalWindowArticle);
 
-	return ventanaModal;
+	return modalWindow;
 }
 
 // ---------------------------------------------------------------
 // ---------------------------------------------------------------
 // ---------------------------------------------------------------
 
-function Eventos_del_Menu_Principal(){
+function Main_Menu_Events(){
 
-	let bm_iniciar_sesion = document.querySelector("#main-menu-button-login"),
-		bm_signupistro = document.querySelector("#main-menu-button-signup"),
-		botonISVolver = document.querySelector("#boton-inicio-de-sesion-volver"),
-		botonsignupVolver = document.querySelector("#signup-back"),
-		botonAcercaDe = document.querySelector("#main-menu-button-about");
+	let logInMenuButton = document.querySelector("#main-menu-button-login"),
+		signUpMenuButton = document.querySelector("#main-menu-button-signup"),
+		backLoginButton = document.querySelector("#back"),
+		signUpBackButton = document.querySelector("#signup-back"),
+		AboutMenuButton = document.querySelector("#main-menu-button-about");
 
 
-	bm_iniciar_sesion.addEventListener("click",()=>{
+	logInMenuButton.addEventListener("click",()=>{
 		document.querySelector("#main-menu").style.display="none";
 		document.querySelector("#login-interface").style.display="flex";
 	});
 
-	bm_signupistro.addEventListener("click",()=>{
+	signUpMenuButton.addEventListener("click",()=>{
 		document.querySelector("#main-menu").style.display="none";
 		document.querySelector("#signup-interface").style.display="flex";
 	});
 
-	botonISVolver.addEventListener("click",()=>{
+	backLoginButton.addEventListener("click",()=>{
 		document.querySelector("#main-menu").style.display="flex";
 		document.querySelector("#login-interface").style.display="none";
 	});
 
-	botonsignupVolver.addEventListener("click",()=>{
+	signUpBackButton.addEventListener("click",()=>{
 		document.querySelector("#main-menu").style.display="flex";
 		document.querySelector("#signup-interface").style.display="none";
 	});
 
-	botonAcercaDe.addEventListener("click",()=>{
+	AboutMenuButton.addEventListener("click",()=>{
 
 		// Se añaden los elementos al documento
 
-		document.querySelector("body").insertAdjacentElement("beforeEnd",buildModalWindow("Desarrollado por: Jesús Velásquez","Versión: Beta"));
+		document.querySelector("body").insertAdjacentElement("beforeEnd",buildModalWindow("Developer: Jesús Velásquez","Version: Beta"));
 
-		document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
-			document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+		document.querySelector(".close-modal-window").addEventListener("click",()=>{
+			document.querySelector("body").removeChild(document.querySelector(".modal-window"));
 		});
 	});
 }
@@ -155,7 +155,7 @@ function Eventos_del_Menu_Principal(){
 // ---------------------------------------------------------------
 // ---------------------------------------------------------------
 
-function Evento_de_signupistro(){
+function Sign_Up_Event(){
 	document.querySelector("#signup").addEventListener("click",()=>{
 
 		// Se extraen los datos de los formularios.
@@ -174,52 +174,52 @@ function Evento_de_signupistro(){
 
 			document.querySelector("body").insertAdjacentElement("beforeEnd",
 				buildModalWindow(`
-					No es posible signupistrar estos datos`,`
-					El nombre de username debe contener mínimo 5 caracteres.`
+					Something went wrong`,`
+					Username must contain at least five characters.`
 				)
 			);
 
-			document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
-				document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+			document.querySelector(".close-modal-window").addEventListener("click",()=>{
+				document.querySelector("body").removeChild(document.querySelector(".modal-window"));
 			});
 
-		}else if(signupData.password.length==0 || signupData.password.length<5){
+		}else if(signupData.password.length==0 || signupData.password.length<6){
 
 			document.querySelector("body").insertAdjacentElement("beforeEnd",
 				buildModalWindow(`
-					No es posible signupistrar estos datos`,`
-					La password debe contener mínimo 6 caracteres.`
+					Something went wrong`,`
+					Password must contain at least six characters.`
 				)
 			);
 
-			document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
-				document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+			document.querySelector(".close-modal-window").addEventListener("click",()=>{
+				document.querySelector("body").removeChild(document.querySelector(".modal-window"));
 			});
 
 		}else if(signupData.username != signupData.confirm_username){
 
 			document.querySelector("body").insertAdjacentElement("beforeEnd",
 				buildModalWindow(`
-					No es posible signupistrar estos datos`,`
-					Los nombres de username no coinciden.`
+					Something went wrong`,`
+					Usernames aren't equal.`
 				)
 			);
 
-			document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
-				document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+			document.querySelector(".close-modal-window").addEventListener("click",()=>{
+				document.querySelector("body").removeChild(document.querySelector(".modal-window"));
 			});
 
 		}else if(signupData.password != signupData.confirm_password){
 
 			document.querySelector("body").insertAdjacentElement("beforeEnd",
 				buildModalWindow(`
-					No es posible signupistrar estos datos`,`
-					Las contraseñas no coinciden.`
+					Something went wrong`,`
+					Passwords aren't equal.`
 				)
 			);
 
-			document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
-				document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+			document.querySelector(".close-modal-window").addEventListener("click",()=>{
+				document.querySelector("body").removeChild(document.querySelector(".modal-window"));
 			});
 
 		}else{
@@ -250,8 +250,8 @@ function Evento_de_signupistro(){
 						)
 					);
 
-					document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
-						document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+					document.querySelector(".close-modal-window").addEventListener("click",()=>{
+						document.querySelector("body").removeChild(document.querySelector(".modal-window"));
 					});
 
 					document.querySelector("#signup").style.display="inline";
@@ -294,12 +294,12 @@ function Evento_de_signupistro(){
 
 					document.querySelector("body").insertAdjacentElement("beforeEnd",
 						buildModalWindow(``,`
-							Te has signupistrado en la base de datos correctamente.`
+							You have succesfully singed up.`
 						)
 					);
 
-					document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
-						document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+					document.querySelector(".close-modal-window").addEventListener("click",()=>{
+						document.querySelector("body").removeChild(document.querySelector(".modal-window"));
 					});
 
 					document.querySelector("#signup").style.display="inline";
@@ -329,7 +329,7 @@ function Evento_de_signupistro(){
 
 function Evento_de_Inicio_de_Sesion(){
 
-	document.querySelector("#iniciar-sesion").addEventListener("click",()=>{
+	document.querySelector("#login").addEventListener("click",()=>{
 
 		let datos ={
 			username:document.querySelector("input[name='username']").value,
@@ -340,30 +340,30 @@ function Evento_de_Inicio_de_Sesion(){
 
 			document.querySelector("body").insertAdjacentElement("beforeEnd",
 				buildModalWindow(``,`
-					Coloque su nombre de username.`
+					Insert your username.`
 				)
 			);
 
-			document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
-				document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+			document.querySelector(".close-modal-window").addEventListener("click",()=>{
+				document.querySelector("body").removeChild(document.querySelector(".modal-window"));
 			});
 
 		}else if(datos.password.length==0){
 
 			document.querySelector("body").insertAdjacentElement("beforeEnd",
 				buildModalWindow(``,`
-					Coloque su contraseña.`
+					Insert your password.`
 				)
 			);
 
-			document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
-				document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+			document.querySelector(".close-modal-window").addEventListener("click",()=>{
+				document.querySelector("body").removeChild(document.querySelector(".modal-window"));
 			});
 
 		}else if(verificarInicioDeSesion(datos.username,datos.password)){
 
-			document.querySelector("#iniciar-sesion").style.display="none";
-			document.querySelector("#boton-inicio-de-sesion-volver").style.display="none";
+			document.querySelector("#login").style.display="none";
+			document.querySelector("#back").style.display="none";
 			document.querySelector("#login-interface").style.opacity="0.5";
 
 			document.querySelector("input[name='username']").setAttribute("disabled","true");
@@ -376,12 +376,12 @@ function Evento_de_Inicio_de_Sesion(){
 					)
 				);
 
-				document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
-					document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+				document.querySelector(".close-modal-window").addEventListener("click",()=>{
+					document.querySelector("body").removeChild(document.querySelector(".modal-window"));
 				});
 
-				document.querySelector("#iniciar-sesion").style.display="inline";
-				document.querySelector("#boton-inicio-de-sesion-volver").style.display="inline";
+				document.querySelector("#login").style.display="inline";
+				document.querySelector("#back").style.display="inline";
 
 				document.querySelector("input[name='username']").value="";
 				document.querySelector("input[name='password']").value="";
@@ -394,8 +394,8 @@ function Evento_de_Inicio_de_Sesion(){
 
 		}else{
 
-			document.querySelector("#iniciar-sesion").style.display="none";
-			document.querySelector("#boton-inicio-de-sesion-volver").style.display="none";
+			document.querySelector("#login").style.display="none";
+			document.querySelector("#back").style.display="none";
 			document.querySelector("#login-interface").style.opacity="0.5";
 
 			document.querySelector("input[name='username']").setAttribute("disabled","true");
@@ -404,16 +404,16 @@ function Evento_de_Inicio_de_Sesion(){
 			setTimeout(()=>{
 				document.querySelector("body").insertAdjacentElement("beforeEnd",
 					buildModalWindow(``,`
-						El username o la contraseña es incorrecto. Inténtelo de nuevo.`
+						Incorrect username or password. Please try it again.`
 					)
 				);
 
-				document.querySelector(".cerrar-ventana-modal").addEventListener("click",()=>{
-					document.querySelector("body").removeChild(document.querySelector(".ventana-modal"));
+				document.querySelector(".close-modal-window").addEventListener("click",()=>{
+					document.querySelector("body").removeChild(document.querySelector(".modal-window"));
 				});
 
-				document.querySelector("#iniciar-sesion").style.display="inline";
-				document.querySelector("#boton-inicio-de-sesion-volver").style.display="inline";
+				document.querySelector("#login").style.display="inline";
+				document.querySelector("#back").style.display="inline";
 
 				document.querySelector("input[name='username']").value="";
 				document.querySelector("input[name='password']").value="";
@@ -433,8 +433,8 @@ function Evento_de_Inicio_de_Sesion(){
 
 window.addEventListener("load",()=>{
 
-	Eventos_del_Menu_Principal();
-	Evento_de_signupistro();
+	Main_Menu_Events();
+	Sign_Up_Event();
 	Evento_de_Inicio_de_Sesion();
 
 });
