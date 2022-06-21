@@ -8,43 +8,43 @@ var registeredAccounts = [{username:"admin",password:"iamtheboss"}];
 
 function verifySavedData(username,password){
 
-	let retorno;
+	let returnsData;
 
 	for (let i = 0; i < registeredAccounts.length; i++) {
 		
 		if(registeredAccounts[i].username==username || registeredAccounts[i].password==password){
 
-			retorno=true;
+			returnsData=true;
 			break;
 
-		}else retorno=false;
+		}else returnsData=false;
 	}
 
-	return retorno;
+	return returnsData;
 }
 
 function verificarInicioDeSesion(username,password){
 
-	let retorno;
+	let returnsData;
 
 	for (let i = 0; i < registeredAccounts.length; i++) {
 		
 		if(registeredAccounts[i].username==username && registeredAccounts[i].password==password){
 
-			retorno=true;
+			returnsData=true;
 			break;
 
-		}else retorno=false;
+		}else returnsData=false;
 	}
 
-	return retorno;
+	return returnsData;
 }
 
 // ---------------------------------------------------------------
 // ---------------------------------------------------------------
 // ---------------------------------------------------------------
 
-function buildModalWindow(P1="",P2){
+function buildModalWindow(P1="",P2=""){
 	
 	// Se creará una nueva ventana modal para añadirla al documento
 
@@ -87,7 +87,7 @@ function buildModalWindow(P1="",P2){
 		background:-webkit-linear-gradient(bottom,#DE2573,#FE4F30);
 		border:none;
 		border-radius:5px;
-		padding:2%;
+		padding:10px 15px;
 		margin-top:5%;
 		cursor:pointer;
 	`);
@@ -327,7 +327,7 @@ function Sign_Up_Event(){
 // ---------------------------------------------------------------
 // ---------------------------------------------------------------
 
-function Evento_de_Inicio_de_Sesion(){
+function Login_Event(){
 
 	document.querySelector("#login").addEventListener("click",()=>{
 
@@ -435,7 +435,7 @@ window.addEventListener("load",()=>{
 
 	Main_Menu_Events();
 	Sign_Up_Event();
-	Evento_de_Inicio_de_Sesion();
+	Login_Event();
 
 });
 
