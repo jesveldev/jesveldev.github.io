@@ -293,10 +293,15 @@ button{
 		justify-content: center;
 	}
 
-	#main-menu,#login-interface, #signup-interface{
+	#login-interface, #signup-interface{
+		width: 75vw;
+		height: 80vh;
+	}
+
+	#main-menu{
 		width: 55vw;
-		overflow:hidden;
 		align-items: center;
+		height: 45vh;
 	}
 
 	.main-menu-button{
@@ -315,6 +320,10 @@ button{
 
 	#test-version-container{
 		font-size: 1.3em;
+	}
+
+	.modal-window-paragraph{
+		font-size: 1.15em;
 	}
 }
 
