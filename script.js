@@ -46,7 +46,7 @@ function verificarInicioDeSesion(username,password){
 
 function buildModalWindow(P1="",P2=""){
 	
-	// Se creará una nueva ventana modal para añadirla al documento
+	// Here will be created a new modal window for add it to document
 
 	let modalWindow = document.createElement("DIV"),
 		modalWindowArticle = document.createElement("ARTICLE"),
@@ -54,7 +54,7 @@ function buildModalWindow(P1="",P2=""){
 		secondParagraphModalWindow = document.createElement("P"),
 		modalWindowButton = document.createElement("BUTTON");
 
-	// Se configuran los elementos con estilos y clases
+	// Here are setting styles and classes to the elements
 
 	modalWindow.setAttribute("class","modal-window");
 	modalWindow.setAttribute("style",`
@@ -95,13 +95,15 @@ function buildModalWindow(P1="",P2=""){
 	modalWindowButton.setAttribute("class","close-modal-window");
 	modalWindowButton.textContent="Close";
 
-	// Se anidan los elementos entre si
+	// Finally nesting the elements in their containers
 
 	modalWindowArticle.appendChild(firstParagraphModalWindow);
 	modalWindowArticle.appendChild(secondParagraphModalWindow);
 	modalWindowArticle.appendChild(modalWindowButton);
 
 	modalWindow.appendChild(modalWindowArticle);
+
+	// Returning modal window's HTML element.
 
 	return modalWindow;
 }
@@ -116,7 +118,7 @@ function Main_Menu_Events(){
 		signUpMenuButton = document.querySelector("#main-menu-button-signup"),
 		backLoginButton = document.querySelector("#back"),
 		signUpBackButton = document.querySelector("#signup-back"),
-		AboutMenuButton = document.querySelector("#main-menu-button-about");
+		aboutMenuButton = document.querySelector("#main-menu-button-about");
 
 
 	logInMenuButton.addEventListener("click",()=>{
@@ -139,7 +141,7 @@ function Main_Menu_Events(){
 		document.querySelector("#signup-interface").style.display="none";
 	});
 
-	AboutMenuButton.addEventListener("click",()=>{
+	aboutMenuButton.addEventListener("click",()=>{
 
 		// Se añaden los elementos al documento
 
@@ -438,4 +440,3 @@ window.addEventListener("load",()=>{
 	Login_Event();
 
 });
-

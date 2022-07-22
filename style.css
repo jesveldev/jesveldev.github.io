@@ -11,6 +11,7 @@ body{
 	align-items: center;
 	height: 100vh;
 	padding-right: 3%;
+	font-size:1.8em;
 }
 
 /*-------------------------------------------------------------*/
@@ -41,7 +42,7 @@ body{
 	margin: 20% 0;
 }
 
-@keyframes brillo-fluctuante{
+@keyframes changing-backlight{
 	0%{
 		box-shadow: 0px 0px 5px white;
 	}
@@ -66,7 +67,7 @@ body{
 	text-shadow: 0px 0px 10px black;
 	box-shadow: 0px 0px 5px white;
 	transition:0.1s linear;
-	animation: brillo-fluctuante 2s linear infinite;
+	animation: changing-backlight 2s linear infinite;
 }
 
 .main-menu-button:hover{
@@ -242,10 +243,10 @@ button{
 
 #menu-logo{
 	position: fixed;
-	top:15%;
-	left: 13%;
+	top:6%;
+	left: 8%;
 	opacity:0.5;
-	width: 300px;
+	width: 35vw;
 	border-radius: 100%;
 	/*margin:8% 0 6% 0;*/
 	animation: giro-logo 30s linear infinite;
@@ -254,10 +255,10 @@ button{
 
 #internal-menu-logo{
 	position: fixed;
-	top:15%;
-	left: 13%;
+	top:6%;
+	left: 8%;
 	opacity:1;
-	width: 300px;
+	width: 35vw;
 	border-radius: 100%;
 	/*margin:8% 0 6% 0;*/
 	transition: 0.22s linear;
@@ -278,4 +279,105 @@ button{
 	font-weight: bold;
 	font-style: italic;
 	cursor:default;
+}
+
+/*------------------------------------------------*/
+/*------------------------------------------------*/
+/*------------------------------------------------*/
+/*------------------------------------------------*/
+
+/*                   MEDIA QUERIES                */
+
+@media screen and (max-width: 1000px){
+	body{
+		justify-content: center;
+	}
+
+	#main-menu,#login-interface, #signup-interface{
+		width: 50vw;
+		overflow:hidden;
+		align-items: center;
+	}
+
+	.main-menu-button{
+		padding: 1.5%;
+		font-size: 2em;
+		width: 75%;
+	}
+
+	#main-menu-button-signup{
+		margin:2.5% 0;
+	}
+
+	#menu-logo,#internal-menu-logo{
+		display:none;
+	}
+
+	#test-version-container{
+		font-size: 1.3em;
+	}
+}
+
+@media screen and (max-width: 1100px){
+
+	#main-menu{
+		font-size:1.15em;
+	}
+
+	.main-menu-button{
+		margin: 10% 0;
+	}
+
+	#menu-logo,#internal-menu-logo{
+		top:20%;
+		left:15%;
+	}
+}
+
+@media screen and (max-width: 1250px){
+
+	#main-menu{
+		font-size:1.15em;
+	}
+
+	.main-menu-button{
+		margin: 10% 0;
+	}
+
+	#menu-logo,#internal-menu-logo{
+		top:15%;
+		left:12%;
+	}
+}
+
+@media screen and (max-width: 1300px){
+
+	#main-menu{
+		font-size:1.15em;
+	}
+
+	.main-menu-button{
+		margin: 10% 0;
+	}
+
+	#menu-logo,#internal-menu-logo{
+		top:auto;
+		left:10%;
+	}
+}
+
+@media screen and (max-width: 1350px){
+
+	body{
+		font-size:1.15em;
+	}
+
+	.main-menu-button{
+		margin: 10% 0;
+	}
+
+	#menu-logo,#internal-menu-logo{
+		top:auto;
+		left:10%;
+	}
 }
