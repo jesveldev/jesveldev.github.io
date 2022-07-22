@@ -294,14 +294,14 @@ button{
 	}
 
 	#main-menu,#login-interface, #signup-interface{
-		width: 65vw;
+		width: 55vw;
 		overflow:hidden;
 		align-items: center;
 	}
 
 	.main-menu-button{
 		padding: 1.5%;
-		font-size: 1.5em;
+		font-size: 1.25em;
 		width: 75%;
 	}
 
