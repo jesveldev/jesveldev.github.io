@@ -325,6 +325,13 @@ button{
 	.modal-window-paragraph{
 		font-size: 1.15em;
 	}
+
+	input[name="username"],input[name="password"],
+	input[name="signup-username"],input[name="signup-password"],
+	input[name="signup-confirm-username"],input[name="signup-confirm-password"]
+	{
+		width: 80%;
+	}
 }
 
 @media screen and (max-width: 1100px){
